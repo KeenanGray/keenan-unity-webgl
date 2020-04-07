@@ -1,4 +1,4 @@
-module github.com/KeenanGray/Unity_WebGL_Server
+module github.com/KeenanGray/keenan-unity-webgl
 
 go 1.12
 

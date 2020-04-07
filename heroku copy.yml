@@ -5,4 +5,4 @@ build:
     - go
 
 run:
-  web: Unity_WebGL_Server
+  web: keenan-unity-webgl

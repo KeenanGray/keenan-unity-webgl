@@ -1,1 +1,1 @@
-web: bin/Unity_WebGL_Server
+web: bin/keenan-unity-webgl
