@@ -25,9 +25,6 @@ func main() {
 	// Serve frontend static files
 	router.Use(static.Serve("/", static.LocalFile("./web", true)))
 	router.Use(static.Serve("/public", static.LocalFile("./web/public", true)))
-	router.Use(static.Serve("/static", static.LocalFile("./web/static", true)))
-
-	//router.Static("/public", "public")
 
 	// Setup route group for the API
 	api := router.Group("api/")
@@ -38,5 +35,6 @@ func main() {
 			})
 		})
 	}
+
 	router.Run()
 }
