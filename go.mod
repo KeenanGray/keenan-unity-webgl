@@ -1,4 +1,4 @@
-module github.com/KeenanGray/keenan-gray-portfolio
+module github.com/KeenanGray/Unity_WebGL_Server
 
 go 1.12
 
