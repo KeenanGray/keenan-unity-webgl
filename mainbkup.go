@@ -1,29 +1,20 @@
 package main
 
 import (
-	context "context"
-	"flag"
+	"context"
 	"fmt"
+
 	"log"
 	"math/rand"
 	"net"
-	pb "protocolor"
 
-	//"fmt"
-	"net/http"
-	//"time"
-	//	"log"
-	//"github.com/gorilla/mux"
-	"github.com/gin-contrib/static"
-	"github.com/gin-gonic/gin"
-	grpc "google.golang.org/grpc"
-	//"os"
-	//"fmt"
-	//"path/filepath"
+	"google.golang.org/grpc"
+
+	pb "protocolor"
 )
 
 const (
-	port       = ":8080"
+	port       = ":50051"
 	colorBytes = 3
 )
 
@@ -46,10 +37,8 @@ func randomHex() string {
 	return fmt.Sprintf("%X", bytes)
 }
 
-//Go application entrypoint
+//Create a gRPC server and listen for incoming requests
 func main() {
-	var dir string
-
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
 		log.Fatalf("Failed to listen on port [%s]: %v", port, err)
@@ -59,25 +48,4 @@ func main() {
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("Failed to start the server: %v", err)
 	}
-
-	flag.StringVar(&dir, "dir", ".", "the directory to serve files from. Defaults to the current dir")
-	flag.Parse()
-	// Set the router as the default one shipped with Gin
-	router := gin.Default()
-
-	// Serve frontend static files
-	router.Use(static.Serve("/", static.LocalFile("./web", true)))
-	router.Use(static.Serve("/public", static.LocalFile("./public", true)))
-
-	// Setup route group for the API
-	api := router.Group("api/")
-	{
-		api.GET("/ping", func(c *gin.Context) {
-			c.JSON(http.StatusOK, gin.H{
-				"message": "Server is running",
-			})
-		})
-	}
-
-	router.Run()
 }
