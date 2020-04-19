@@ -7,7 +7,6 @@ import (
 
 	"log"
 	"math/rand"
-	"net"
 
 	pb "github.com/keenangray/protocolor"
 
@@ -18,14 +17,13 @@ import (
 	//"github.com/gorilla/mux"
 	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
-	grpc "google.golang.org/grpc"
 	//"os"
 	//"fmt"
 	//"path/filepath"
 )
 
 const (
-	port       = ":8080"
+	port       = ":8081"
 	colorBytes = 3
 )
 
@@ -51,16 +49,6 @@ func randomHex() string {
 //Go application entrypoint
 func main() {
 	var dir string
-
-	lis, err := net.Listen("tcp", port)
-	if err != nil {
-		log.Fatalf("Failed to listen on port [%s]: %v", port, err)
-	}
-	s := grpc.NewServer()
-	pb.RegisterColorGeneratorServer(s, &server{})
-	if err := s.Serve(lis); err != nil {
-		log.Fatalf("Failed to start the server: %v", err)
-	}
 
 	flag.StringVar(&dir, "dir", ".", "the directory to serve files from. Defaults to the current dir")
 	flag.Parse()
