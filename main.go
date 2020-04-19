@@ -4,10 +4,12 @@ import (
 	context "context"
 	"flag"
 	"fmt"
+
 	"log"
 	"math/rand"
 	"net"
-	pb "protocolor"
+
+	pb "github.com/keenangray/protocolor"
 
 	//"fmt"
 	"net/http"
