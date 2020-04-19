@@ -1,6 +1,5 @@
 # Build the Go API
 FROM golang:latest AS builder
-ENV GO111MODULE=auto
 ADD . /app
 WORKDIR /app/
 RUN go mod download
