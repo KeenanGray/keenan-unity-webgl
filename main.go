@@ -8,8 +8,6 @@ import (
 	"log"
 	"math/rand"
 
-	pb "github.com/keenangray/protocolor"
-
 	//"fmt"
 	"net/http"
 	//"time"
