@@ -15,11 +15,6 @@ import (
 	//"path/filepath"
 )
 
-const (
-	port       = ":8081"
-	colorBytes = 3
-)
-
 //Go application entrypoint
 func main() {
 	var dir string
